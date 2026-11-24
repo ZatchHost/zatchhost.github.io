@@ -29,3 +29,16 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #a9
  .motion-ready .reveal{opacity:1;transform:none;transition:none}
  .value-card:hover,.back-top:hover,.button:hover{transform:none}
 }
+
+
+/* Language selector */
+.language-picker{display:flex;align-items:center;gap:8px;margin-left:2px;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.025)}
+.language-picker label{font-size:10px;color:#8991aa}
+.language-picker select{border:0;outline:0;background:transparent;color:#f4f5fb;font:600 11px var(--font-body);cursor:pointer}
+.language-picker select option{background:#101322;color:#f4f5fb}
+.language-picker select:focus-visible{outline:2px solid #a995ff;outline-offset:3px;border-radius:3px}
+@media(max-width:620px){
+  .language-picker{justify-content:space-between;margin:10px 0 0;padding:10px 12px}
+  .language-picker label{font-size:12px}
+  .language-picker select{font-size:13px}
+}
