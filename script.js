@@ -42,9 +42,21 @@ if (!reduceMotion && "IntersectionObserver" in window) {
       entry.target.classList.add("is-visible");
       observer.unobserve(entry.target);
     });
-  }, { threshold: 0.12, rootMargin: "0px 0px -36px 0px" });
+  }, { threshold: 0, rootMargin: "0px 0px 120px 0px" });
 
-  revealTargets.forEach((element) => revealObserver.observe(element));
+  revealTargets.forEach((element) => {
+    const rect = element.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      element.classList.add("is-visible");
+    } else {
+      revealObserver.observe(element);
+    }
+  });
+
+  window.setTimeout(() => {
+    revealTargets.forEach((element) => element.classList.add("is-visible"));
+    revealObserver.disconnect();
+  }, 2500);
 }
 
 const translations = {
@@ -298,15 +310,19 @@ function setLanguage(language) {
     const element = document.querySelector(selector);
     if (!element) return;
     if (selector.includes("summary")) {
-      const icon = element.querySelector("span:last-child");
+      const icon = element.querySelector(".faq-toggle-icon") || element.querySelector("span:last-child");
       element.innerHTML = "";
       const label = document.createElement("span");
       label.className = "summary-label";
       label.textContent = value;
       element.append(label);
-      if (icon) element.append(icon);
-      else {
+      if (icon) {
+        icon.classList.add("faq-toggle-icon");
+        icon.setAttribute("aria-hidden", "true");
+        element.append(icon);
+      } else {
         const plus = document.createElement("span");
+        plus.className = "faq-toggle-icon";
         plus.setAttribute("aria-hidden", "true");
         plus.textContent = "+";
         element.append(plus);
