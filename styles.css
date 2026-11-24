@@ -84,10 +84,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #a9
 .draft-notice strong{color:#ffdda6}
 .legal-updated{color:#7f879e!important;font-size:12px!important}
 .legal-back{padding-top:30px}
-.footer-link-groups{display:flex;align-items:center;gap:30px;padding:0 0 18px;flex-wrap:wrap}
-.footer-link-group{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.footer-link-group h2{margin:0;color:#858da5;font:700 9px/1.4 var(--font-body);letter-spacing:1.2px;text-transform:uppercase}
-.footer-link-group a{color:#aab1c5;font-size:10px;text-decoration:none;transition:color .2s ease}
+.footer-link-groups{display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding:0 0 24px}
+.footer-link-group{display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+.footer-link-group h2{margin:0 0 2px;color:#858da5;font:700 10px/1.4 var(--font-body);letter-spacing:1.5px;text-transform:uppercase}
+.footer-link-group a{color:#aab1c5;font-size:11px;text-decoration:none;transition:color .2s ease}
 .footer-link-group a:hover{color:#fff}
 .footer-link-group a span{color:var(--blue);margin-left:4px}
 @media(max-width:620px){
@@ -96,5 +96,5 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #a9
   .legal-main section h2{font-size:20px}
   .legal-main p,.legal-main li{font-size:13px}
   .draft-notice{padding:15px}
-  .footer-link-groups{gap:14px 22px;padding-bottom:14px}.footer-link-group{gap:10px}
+  .footer-link-groups{gap:16px;padding-bottom:18px}.footer-link-group{gap:7px}
 }
