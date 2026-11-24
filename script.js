@@ -21,6 +21,15 @@ if (menuButton && navigation) {
 const year = document.querySelector("#year");
 if (year) year.textContent = String(new Date().getFullYear());
 
+ // Trigger a dedicated entrance sequence once the page styles are ready.
+ const landingItems = document.querySelectorAll(".hero-copy > *");
+ landingItems.forEach((element, index) => {
+   element.style.setProperty("--landing-delay", `${index * 110}ms`);
+ });
+ window.requestAnimationFrame(() => {
+   document.body.classList.add("landing-ready");
+ });
+
 // Scroll reveals: use a progressive enhancement and avoid hiding content before setup.
 const revealTargets = document.querySelectorAll([
   ".hero-copy > *", ".hero-visual > *", ".intro-grid > div",
