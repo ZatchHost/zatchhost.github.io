@@ -22,14 +22,13 @@ const year = document.querySelector("#year");
 if (year) year.textContent = String(new Date().getFullYear());
 
 // Scroll reveals: use a progressive enhancement and avoid hiding content before setup.
-const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
 const revealTargets = document.querySelectorAll([
   ".hero-copy > *", ".hero-visual > *", ".intro-grid > div",
   ".section-heading", ".value-card", ".manifesto-orb",
   ".manifesto-copy > *", ".faq-grid > div", ".faq-list details"
 ].join(","));
 
-if (revealTargets.length && !motionPreference.matches && "IntersectionObserver" in window) {
+if (revealTargets.length && "IntersectionObserver" in window) {
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
@@ -61,7 +60,7 @@ if (revealTargets.length && !motionPreference.matches && "IntersectionObserver" 
     revealObserver.disconnect();
   }, 6000);
 } else {
-  // Keep content visible when motion is reduced or observers are unsupported.
+  // Keep content visible when observers are unsupported.
   revealTargets.forEach((element) => element.classList.add("is-visible"));
 }
 
