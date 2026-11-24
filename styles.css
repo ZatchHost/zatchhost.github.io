@@ -21,6 +21,16 @@
 .back-top:hover{color:#fff;transform:translateY(-2px)}
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #a995ff;outline-offset:4px;border-radius:4px}
 
+.motion-ready .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+}
+
+.motion-ready .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Language selector */
 .language-picker{display:flex;align-items:center;gap:8px;margin-left:2px;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.025)}
