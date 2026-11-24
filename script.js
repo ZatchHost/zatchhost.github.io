@@ -20,3 +20,29 @@ if (menuButton && navigation) {
 
 const year = document.querySelector("#year");
 if (year) year.textContent = String(new Date().getFullYear());
+
+// Reveal content as it enters the viewport, without hiding anything if unsupported.
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const revealTargets = document.querySelectorAll([
+  ".hero-copy > *", ".hero-visual > *", ".intro-grid > div",
+  ".section-heading", ".value-card", ".manifesto-orb",
+  ".manifesto-copy > *", ".faq-grid > div", ".faq-list details"
+].join(","));
+
+if (!reduceMotion && "IntersectionObserver" in window) {
+  document.body.classList.add("motion-ready");
+  revealTargets.forEach((element, index) => {
+    element.classList.add("reveal");
+    element.style.setProperty("--reveal-delay", `${(index % 4) * 85}ms`);
+  });
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -36px 0px" });
+
+  revealTargets.forEach((element) => revealObserver.observe(element));
+}
