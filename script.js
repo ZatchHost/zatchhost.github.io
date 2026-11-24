@@ -21,7 +21,7 @@ if (menuButton && navigation) {
 const year = document.querySelector("#year");
 if (year) year.textContent = String(new Date().getFullYear());
 
-// Scroll reveals stay lightweight and respect the visitor's motion preferences.
+// Scroll reveals: activate only after setup, and keep a failsafe for missed observer events.
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const revealTargets = document.querySelectorAll([
   ".hero-copy > *", ".hero-visual > *", ".intro-grid > div",
@@ -29,34 +29,32 @@ const revealTargets = document.querySelectorAll([
   ".manifesto-copy > *", ".faq-grid > div", ".faq-list details"
 ].join(","));
 
-if (!reduceMotion && "IntersectionObserver" in window) {
-  document.body.classList.add("motion-ready");
-  revealTargets.forEach((element, index) => {
-    element.classList.add("reveal");
-    element.style.setProperty("--reveal-delay", `${(index % 4) * 85}ms`);
-  });
+if (!reduceMotion && revealTargets.length) {
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.01, rootMargin: "0px 0px 80px 0px" });
 
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add("is-visible");
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0, rootMargin: "0px 0px 120px 0px" });
-
-  revealTargets.forEach((element) => {
-    const rect = element.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      element.classList.add("is-visible");
-    } else {
+    revealTargets.forEach((element, index) => {
+      element.classList.add("reveal");
+      element.style.setProperty("--reveal-delay", `${(index % 4) * 85}ms`);
       revealObserver.observe(element);
-    }
-  });
+    });
 
-  window.setTimeout(() => {
+    // Prevent elements from remaining hidden if an observer event is missed.
+    window.setTimeout(() => {
+      revealTargets.forEach((element) => element.classList.add("is-visible"));
+      revealObserver.disconnect();
+    }, 8000);
+    document.body.classList.add("motion-ready");
+  } else {
     revealTargets.forEach((element) => element.classList.add("is-visible"));
-    revealObserver.disconnect();
-  }, 2500);
+  }
 }
 
 const translations = {
