@@ -21,40 +21,48 @@ if (menuButton && navigation) {
 const year = document.querySelector("#year");
 if (year) year.textContent = String(new Date().getFullYear());
 
-// Scroll reveals: activate only after setup, and keep a failsafe for missed observer events.
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+// Scroll reveals: use a progressive enhancement and avoid hiding content before setup.
+const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
 const revealTargets = document.querySelectorAll([
   ".hero-copy > *", ".hero-visual > *", ".intro-grid > div",
   ".section-heading", ".value-card", ".manifesto-orb",
   ".manifesto-copy > *", ".faq-grid > div", ".faq-list details"
 ].join(","));
 
-if (!reduceMotion && revealTargets.length) {
-  if ("IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.01, rootMargin: "0px 0px 80px 0px" });
-
-    revealTargets.forEach((element, index) => {
-      element.classList.add("reveal");
-      element.style.setProperty("--reveal-delay", `${(index % 4) * 85}ms`);
-      revealObserver.observe(element);
+if (revealTargets.length && !motionPreference.matches && "IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
     });
+  }, { threshold: 0, rootMargin: "0px 0px 100px 0px" });
 
-    // Prevent elements from remaining hidden if an observer event is missed.
-    window.setTimeout(() => {
-      revealTargets.forEach((element) => element.classList.add("is-visible"));
-      revealObserver.disconnect();
-    }, 8000);
-    document.body.classList.add("motion-ready");
-  } else {
+  // Set the enhancement class before targets are hidden, then register them.
+  revealTargets.forEach((element, index) => {
+    element.classList.add("reveal");
+    element.style.setProperty("--reveal-delay", `${(index % 4) * 85}ms`);
+  });
+  document.body.classList.add("motion-ready");
+
+  revealTargets.forEach((element) => {
+    // Reveal items already in the viewport immediately to avoid a blank first paint.
+    const rect = element.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      element.classList.add("is-visible");
+    } else {
+      revealObserver.observe(element);
+    }
+  });
+
+  // Safety net for observer failures or unusually long page-load delays.
+  window.setTimeout(() => {
     revealTargets.forEach((element) => element.classList.add("is-visible"));
-  }
+    revealObserver.disconnect();
+  }, 6000);
+} else {
+  // Keep content visible when motion is reduced or observers are unsupported.
+  revealTargets.forEach((element) => element.classList.add("is-visible"));
 }
 
 const translations = {
