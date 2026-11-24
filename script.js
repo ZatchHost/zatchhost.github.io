@@ -44,14 +44,22 @@ if (revealTargets.length && "IntersectionObserver" in window) {
   });
   document.body.classList.add("motion-ready");
 
+  const initiallyVisible = [];
+
   revealTargets.forEach((element) => {
-    // Reveal items already in the viewport immediately to avoid a blank first paint.
     const rect = element.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
-      element.classList.add("is-visible");
+      initiallyVisible.push(element);
     } else {
       revealObserver.observe(element);
     }
+  });
+
+  // Let the hidden state render once, then reveal the landing content in a stagger.
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
+      initiallyVisible.forEach((element) => element.classList.add("is-visible"));
+    });
   });
 
   // Safety net for observer failures or unusually long page-load delays.
