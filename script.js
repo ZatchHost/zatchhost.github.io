@@ -84,7 +84,8 @@ if (revealTargets.length && "IntersectionObserver" in window) {
 const translations = {
   fr: {
     label: "Langue", skip: "Aller au contenu", nav: "Navigation principale",
-    service: "Le service", values: "Nos engagements", faq: "FAQ", navCta: "Découvrir ZatchHost",
+    service: "Le service", values:
+    offersNav: "Les offres", offersKicker: "OFFRES DISPONIBLES", offersTitle: "Un premier service, <span class=\"gradient-text\">gratuit.</span>", offersIntro: "Des ressources simples pour donner vie a vos projets, sans frais.", offerCategory: "HEBERGEMENT DE BOT", offerTitle: "Bot Discord Python", offerDescription: "Hebergez votre bot Discord developpe en Python et laissez-le tourner sans avoir a garder votre propre machine allumee.", offerRam: "Memoire RAM", offerStorage: "Stockage", offerBandwidth: "Bande passante", offerUnlimited: "Illimitee", offerSpeed: "Debit reseau jusqu'a 100 Mbps", offerOrder: "Commander gratuitement", offerFootnote: "La commande se fait via un ticket sur notre serveur Discord. Notre equipe vous accompagnera pour la mise en place.", "Nos engagements", faq: "FAQ", navCta: "Découvrir ZatchHost",
     eyebrow: "L'hébergement pensé en France",
     heroTitle: "Vos projets méritent<br>un <span class=\"gradient-text\">meilleur terrain.</span>",
     heroLead: "Un hébergement accessible, une expérience claire et une équipe à taille humaine. Avec ZatchHost, concentrez-vous sur vos projets. On s'occupe du reste.",
@@ -120,7 +121,8 @@ const translations = {
   },
   en: {
     label: "Language", skip: "Skip to content", nav: "Main navigation",
-    service: "The service", values: "Our values", faq: "FAQ", navCta: "Discover ZatchHost",
+    service: "The service", values:
+    offersNav: "Offers", offersKicker: "AVAILABLE OFFERS", offersTitle: "A first service, <span class=\"gradient-text\">free.</span>", offersIntro: "Simple resources to bring your projects to life, at no cost.", offerCategory: "BOT HOSTING", offerTitle: "Python Discord Bot", offerDescription: "Host your Python-powered Discord bot and keep it running without leaving your own computer on.", offerRam: "RAM", offerStorage: "Storage", offerBandwidth: "Bandwidth", offerUnlimited: "Unlimited", offerSpeed: "Network speed up to 100 Mbps", offerOrder: "Order for free", offerFootnote: "Place your order by opening a ticket on our Discord server. Our team will help you get set up.", "Our values", faq: "FAQ", navCta: "Discover ZatchHost",
     eyebrow: "Hosting designed in France",
     heroTitle: "Your projects deserve<br>a <span class=\"gradient-text\">better home.</span>",
     heroLead: "Affordable hosting, a clear experience and a human-sized team. With ZatchHost, focus on your projects. We'll take care of the rest.",
@@ -156,7 +158,8 @@ const translations = {
   },
   es: {
     label: "Idioma", skip: "Saltar al contenido", nav: "Navegación principal",
-    service: "El servicio", values: "Nuestros valores", faq: "Preguntas frecuentes", navCta: "Descubrir ZatchHost",
+    service: "El servicio", values:
+    offersNav: "Ofertas", offersKicker: "OFERTAS DISPONIBLES", offersTitle: "Un primer servicio, <span class=\"gradient-text\">gratis.</span>", offersIntro: "Recursos sencillos para dar vida a tus proyectos, sin coste.", offerCategory: "ALOJAMIENTO DE BOTS", offerTitle: "Bot de Discord en Python", offerDescription: "Aloja tu bot de Discord desarrollado en Python y mantenlo funcionando sin dejar tu propio ordenador encendido.", offerRam: "Memoria RAM", offerStorage: "Almacenamiento", offerBandwidth: "Ancho de banda", offerUnlimited: "Ilimitado", offerSpeed: "Velocidad de red hasta 100 Mbps", offerOrder: "Solicitar gratis", offerFootnote: "Realiza tu pedido abriendo un ticket en nuestro servidor de Discord. Nuestro equipo te ayudara con la configuracion.", "Nuestros valores", faq: "Preguntas frecuentes", navCta: "Descubrir ZatchHost",
     eyebrow: "Alojamiento diseñado en Francia",
     heroTitle: "Tus proyectos merecen<br>un <span class=\"gradient-text\">mejor lugar.</span>",
     heroLead: "Alojamiento accesible, una experiencia clara y un equipo cercano. Con ZatchHost, concéntrate en tus proyectos. Nosotros nos ocupamos del resto.",
@@ -192,7 +195,8 @@ const translations = {
   },
   ja: {
     label: "言語", skip: "本文へスキップ", nav: "メインナビゲーション",
-    service: "サービス", values: "私たちの理念", faq: "よくある質問", navCta: "ZatchHostについて",
+    service: "サービス", values:
+    offersNav: "オファー", offersKicker: "利用可能なオファー", offersTitle: "最初のサービスは<span class=\"gradient-text\">無料。</span>", offersIntro: "プロジェクトを始めるためのシンプルなリソースを無料で提供します。", offerCategory: "ボットホスティング", offerTitle: "Python Discord Bot", offerDescription: "Pythonで開発したDiscordボットをホストし、自分のPCを起動したままにせず実行できます。", offerRam: "RAM", offerStorage: "ストレージ", offerBandwidth: "帯域幅", offerUnlimited: "無制限", offerSpeed: "ネットワーク速度 最大100 Mbps", offerOrder: "無料で申し込む", offerFootnote: "Discordサーバーでチケットを作成してお申し込みください。設定はチームがサポートします。", "私たちの理念", faq: "よくある質問", navCta: "ZatchHostについて",
     eyebrow: "フランスで考案されたホスティング",
     heroTitle: "あなたのプロジェクトに<br><span class=\"gradient-text\">ふさわしい場所を。</span>",
     heroLead: "手頃なホスティング、わかりやすいサービス、そして身近なチーム。ZatchHostと一緒に、プロジェクトに集中してください。あとは私たちにお任せください。",
@@ -228,7 +232,8 @@ const translations = {
   },
   de: {
     label: "Sprache", skip: "Zum Inhalt springen", nav: "Hauptnavigation",
-    service: "Der Service", values: "Unsere Werte", faq: "FAQ", navCta: "ZatchHost entdecken",
+    service: "Der Service", values:
+    offersNav: "Angebote", offersKicker: "VERFUGBARE ANGEBOTE", offersTitle: "Ein erster Service, <span class=\"gradient-text\">kostenlos.</span>", offersIntro: "Einfache Ressourcen fur deine Projekte - ohne Kosten.", offerCategory: "BOT-HOSTING", offerTitle: "Python-Discord-Bot", offerDescription: "Hoste deinen mit Python entwickelten Discord-Bot und lass ihn laufen, ohne deinen eigenen Computer eingeschaltet zu lassen.", offerRam: "Arbeitsspeicher", offerStorage: "Speicherplatz", offerBandwidth: "Bandbreite", offerUnlimited: "Unbegrenzt", offerSpeed: "Netzwerkgeschwindigkeit bis zu 100 Mbps", offerOrder: "Kostenlos bestellen", offerFootnote: "Erstelle zur Bestellung ein Ticket auf unserem Discord-Server. Unser Team hilft dir bei der Einrichtung.", "Unsere Werte", faq: "FAQ", navCta: "ZatchHost entdecken",
     eyebrow: "Hosting aus Frankreich",
     heroTitle: "Deine Projekte verdienen<br>ein <span class=\"gradient-text\">besseres Zuhause.</span>",
     heroLead: "Bezahlbares Hosting, ein klares Angebot und ein persönliches Team. Konzentriere dich mit ZatchHost auf deine Projekte. Wir kümmern uns um den Rest.",
@@ -278,6 +283,20 @@ function setLanguage(language) {
     ".skip-link": t.skip,
     ".navigation": null,
     ".navigation a[href='#service']": t.service,
+    ".navigation a[href='#offres']": t.offersNav,
+    ".offers .section-kicker": t.offersKicker,
+    ".offers h2": t.offersTitle,
+    ".offers-intro": t.offersIntro,
+    ".offer-category": t.offerCategory,
+    ".offer-card h3": t.offerTitle,
+    ".offer-description": t.offerDescription,
+    ".offer-specs > div:nth-child(1) span": t.offerRam,
+    ".offer-specs > div:nth-child(2) span": t.offerStorage,
+    ".offer-specs > div:nth-child(3) span": t.offerBandwidth,
+    ".offer-specs > div:nth-child(3) strong": t.offerUnlimited,
+    ".offer-specs > div:nth-child(3) small": t.offerSpeed,
+    ".offer-button": t.offerOrder,
+    ".offer-footnote": t.offerFootnote,
     ".navigation a[href='#engagements']": t.values,
     ".navigation a[href='#faq']": t.faq,
     ".nav-cta [data-never]": null,
